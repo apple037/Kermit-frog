@@ -19,12 +19,78 @@
 				var node = document.createElement("LI");
 				var textnode = document.createTextNode("Fuck ya!");
 				node.appendChild(textnode);
-				document.getElementById("tt").appendChild(node);
+				document.getElementById("ntt").appendChild(node);
 			}
 			function getText(){
 				var a = document.getElementById("tt");
 				alert(a.textContent);
 			}
+			function insert(){
+				var node = document.createElement("LI");
+				var textnode = document.createTextNode("Hell ya!");
+				node.appendChild(textnode);
+				document.getElementById("tt").insertBefore(node,document.getElementById("tt").childNodes[0]);
+			}
+			function newform(){
+				var a = document.forms["aaa"];
+				var n = a.Name.value;
+				var b = a.birthday.value;
+				var foo = document.getElementById("ft");
+				var test = document.getElementById("ft").hasChildNodes();                   
+				if(test==true){
+					while (foo.firstChild) foo.removeChild(foo.firstChild);
+					var tb = document.createElement("TABLE");
+					var tr_1 = document.createElement("TR");
+					var tr_2 = document.createElement("TR");
+					var td_11 = document.createElement("TH");
+					var td_12 = document.createElement("TH");
+					var td_21 = document.createElement("TD");
+					var td_22 = document.createElement("TD");
+					var na2 = document.createTextNode(n);
+					var na1 = document.createTextNode("NAME");
+					var bi2 = document.createTextNode(b);
+					var bi1 = document.createTextNode("BIRTHDAY");
+					document.getElementById("ft").appendChild(tb).setAttribute("id","tot");
+					td_11.appendChild(na1);
+					td_12.appendChild(bi1);
+					td_21.appendChild(na2);
+					td_22.appendChild(bi2);
+					tb.appendChild(tr_1);
+					tb.appendChild(tr_2);
+					tr_1.appendChild(td_11);
+					tr_1.appendChild(td_12);					
+					tr_2.appendChild(td_21);
+					tr_2.appendChild(td_22);
+				}
+				else{
+					var tb = document.createElement("TABLE")
+					var tr_1 = document.createElement("TR");
+					var tr_2 = document.createElement("TR");
+					var td_11 = document.createElement("TH").setAttribute("class","littlered").setAttribute("onmouseover","this.style.color='blue'").setAttribute("onmouseout","this.style.color='red'");
+					var td_12 = document.createElement("TH");
+					var td_21 = document.createElement("TD");
+					var td_22 = document.createElement("TD");
+					var na2 = document.createTextNode(n);
+					var na1 = document.createTextNode("NAME");
+					var bi2 = document.createTextNode(b);
+					var bi1 = document.createTextNode("BIRTHDAY");
+					document.getElementById("ft").appendChild(tb).setAttribute("id","tot");
+					td_11.appendChild(na1);
+					td_12.appendChild(bi1);
+					td_21.appendChild(na2);
+					td_22.appendChild(bi2);
+					tb.appendChild(tr_1);
+					tb.appendChild(tr_2);
+					tr_1.appendChild(td_11);
+					tr_1.appendChild(td_12);					
+					tr_2.appendChild(td_21);
+					tr_2.appendChild(td_22);
+				}
+			}
+			function setLarge() { 
+			var h = document.getElementById("tt"); h.style.fontSize = "18pt"; 
+			}
+
 			function submit(){
 				var a = document.forms["aaa"];
 				var h="";
@@ -57,6 +123,7 @@
 		</script>
 		</head>
 	<body style="background-color: lightblue">
+	
 			<section id="one" class="wrapper special">
 				<div class="inner">
 					<header class="major">
@@ -98,14 +165,21 @@
 						</table>
 					</div>
 					<div  id="three" class="container">
+						<div id="ft">
+						</div>
 						<div id="tt">
-							<p>Empty!</p>
+							<p id="ntt">Empty!</p>
+							<p class="littlered" onmouseover="this.style.color='blue';" onmouseout="this.style.color='red';" onclick="this.className='bigred';" >動態樣式的字型與色彩</p> 
+
 						</div>
 						
 						<center>
 							<button name="John_Cena" type="030" onclick="fuck(this)">Test</button>
-							<button onclick="append()">Test2</button>
-							<button onclick="getText()">Test3</button>
+							<button onclick="append()">Test2(append)</button>
+							<button onclick="getText()">Test3(show)</button>
+							<button onclick="insert()">Test4(insert)</button>
+							<button onclick="newform()">Test4(newform)</button>
+							<button onclick="setLarge()">Test5(enLarge)</button><br>
 							<button onclick="window.location='..'">Homepage</button>
 						</center>
 					</div>
